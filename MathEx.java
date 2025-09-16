@@ -3,7 +3,8 @@ public class MathEx {
     swap(143);
     swap(932);
     swap(469);
-
+    timeLeft(1, 15, 4, 36);
+    timeLeft(1, 34, 8, 20);
     }
 
 public static void swap(int input){
@@ -16,15 +17,14 @@ public static void swap(int input){
 
 }
 
-public static void timeLeft() {
-    int currentTime = 1230; // Example current time in HHMM format
-    int endTime = 1300; // Example end time in HHMM format
+public static void timeLeft(int curHour, int curMin, int depHour, int depMin){ {
+    int curTotalMin = curHour*60 + curMin;
+    int depTotalMin = depHour*60 + depMin;
+    int leftMin = depTotalMin - curTotalMin;
+    int leftHour = leftMin/60;
+    leftMin = leftMin%60;
+    System.out.println("Time left: " + leftHour + " hours and " + leftMin + " minutes.");
 
-    int timeLeft = endTime - currentTime;
-
-    int hoursLeft = timeLeft / 100;
-    int minutesLeft = timeLeft % 100;
-
-    System.out.println("Time left: " + hoursLeft + " hours and " + minutesLeft + " minutes");
 }
-   
+}
+}
