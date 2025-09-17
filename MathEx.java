@@ -5,6 +5,12 @@ public class MathEx {
     swap(469);
     timeLeft(1, 15, 4, 36);
     timeLeft(1, 34, 8, 20);
+    daysOfWeek(0, 1);
+    daysOfWeek(0,14);
+    daysOfWeek(6,22);
+    daysOfWeek(5, 0);
+    daysOfWeek(1, 24);
+    daysOfWeek(2, 1);
     }
 
 public static void swap(int input){
@@ -26,5 +32,8 @@ public static void timeLeft(int curHour, int curMin, int depHour, int depMin){ {
     System.out.println("Time left: " + leftHour + " hours and " + leftMin + " minutes.");
 
 }
+}
+public static void daysOfWeek(int month, int day){
+    
 }
 }
