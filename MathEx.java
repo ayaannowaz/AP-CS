@@ -14,7 +14,6 @@ public class MathEx {
     }
 
 public static void swap(int input){
-    int a = input;
     int tens = input%10;
     int ones= input%100/10;
     int hundreds = input/100;
