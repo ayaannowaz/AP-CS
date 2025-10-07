@@ -89,3 +89,12 @@ public class Line {
 
 
 }
+
+// Line with endpoints (-1.0, -3.0) and (2.0, 1.0)
+// distance = 5.0
+// Midpoint = (0.5, -1.0)
+// Slope = 1.3333333333333333
+// Slope = 1.3333333333333333
+// distance = 5.0
+// Parallel? true
+// Same length? true
