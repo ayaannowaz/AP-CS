@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+// moves the first character of a string to the end of the string and returns it
+// @param 
 public class StringExercise {
     public static String scroll(String x) {
     int len1 = x.length();
@@ -32,6 +33,31 @@ public class StringExercise {
         String p3 = p2.replace("a","1");
         return p3;
     }
+    public static void nameGame() {
+        Scanner sc = new Scanner (System.in);
+        System.out.println("What is your name?");
+        String name = sc.nextLine();
+        sc.close();
+        
+        int locationSpace = name.indexOf(" ");
+        String firstName = name.substring(0,locationSpace);
+        String lastName = name.substring(locationSpace + 1, name.length());
+        String firstNameR = firstName.substring(1);
+        String lastNameR = lastName.substring(1);
+        String firstNameUp = firstName.toUpperCase();
+        String lastNameUp = lastName.toUpperCase();
+        System.out.println(firstName + ", " + firstName + ", bo-B" + firstNameR);
+        System.out.println("Banana-fana fo-F" + firstNameR);
+        System.out.println("Fee-fi-fo-M" + firstNameR);
+        System.out.println(firstNameUp +"!");
+        System.out.println("");
+        System.out.println(lastName + ", " + lastName + ", bo-B" + lastNameR);
+        System.out.println("Banana-fana fo-F" + lastNameR);
+        System.out.println("Fee-fi-fo-M" + lastNameR);
+        System.out.println(lastNameUp +"!");
+
+
+    }
    public static void main(String[] args) {
 
     System.out.println(scroll("Hello World"));
@@ -52,7 +78,30 @@ public class StringExercise {
     System.out.println(negative("0010111001"));
     System.out.println(negative("11111111"));
 
-    // nameGame();
+    nameGame();
 
    }
 }
+
+// ello WorldH
+// appyh
+// h
+// Lori Renee Reubenstein
+// Taylor Swift
+// Bozo the Clown
+// 123-45-6789 is 123456789
+// 04/20/2025 becomes 20-04-2025
+// 4/2/2025 becomes 2-4-2025
+// 1101000110
+// 00000000
+// What is your name?
+// Fifty Cent
+// Fifty, Fifty, bo-Bifty
+// Banana-fana fo-Fifty
+// Fee-fi-fo-Mifty
+// FIFTY!
+
+// Cent, Cent, bo-Bent
+// Banana-fana fo-Fent
+// Fee-fi-fo-Ment
+// CENT!
