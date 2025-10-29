@@ -37,6 +37,13 @@ public class Conditionals {
         else
             return true;
     }
+
+    public static String setAlarm(int day, boolean onVacation) {
+        if (onVacation) {
+            
+        }
+    }
+    
     public static void main(String[] args) {
         System.out.println("freshmanTrouble");
         System.out.println(freshmanTrouble(true, true));
