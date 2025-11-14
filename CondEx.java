@@ -1,23 +1,32 @@
 public class CondEx {
     
+    // determines if a year is a leap year
+    // @param - int year - the year to check
+    // @return - boolean - true if it is a leap year, false otherwise
     public boolean isLeapYear(int year) {
         if (year%4 == 0 && (year%100 != 0 || year%400 == 0)) 
             return true;
         return false;
-    }
-    public boolean isSooner(int month1, int day1, int year1, int month2, int day2, int year2) {
-        if (year1 < year2)
-            return true;
-        if (year1 == year2) {
-            if (month1 < month2) 
-            return true;
-            if (month1 == month2) {return true;} {
-                    if (day1 < day2)
-                        return true;
-            }
         }
+    
+    
+    // determines if one date is sooner than another
+    // @param - int month1, int day1, int year1 - the first date
+    // @param - int month2, int day2, int year2 - the second
+    // @return - boolean - true if the first date is sooner than the second date
+    
+        public boolean isSooner(int month1, int day1, int year1, int month2, int day2, int year2) {
+        if (year1 != year2) return year1 < year2;
+        if (month1 != month2) return month1 < month2;
+        if (day1 != day2) return day1 < day2;
         return false;
     }
+    
+    // determines the best fit for two sizes within a given space
+    // @param - int space - the available space
+    // @param - int size1 - the size of the first item
+    // @param - int size2 - the size of the second item
+    // @return - int - 0 if neither fits, 1 if only the first fits, 2 if only the second fits, 3 if both fit
     public int findBestFit(int space, int size1, int size2) {
         if (size1 + size2 <= space)
             return 3;
@@ -31,6 +40,11 @@ public class CondEx {
         return 1;
         }
 
+    // determines if it is possible to make a certain length bench using small and big planks
+    // @param - int small - the number of small planks (1 foot each)
+    // @param - int big - the number of big planks (5 feet each)
+    // @param - int goal - the desired length of the bench
+    // @return - boolean - true if it is possible to make the bench, false otherwise
     public boolean makeBenches(int small, int big, int goal) {
         if (goal > small + 5*big) return false;
         if (goal <= small + 5*big) return true;
@@ -40,10 +54,25 @@ public class CondEx {
         return false;
         }
 
+    // removes a specified HTML tag from a string
+    // @param - String s - the input string
+    // @param - String tag - the HTML tag to remove (without angle brackets)
+    // @return - String - the input string with the specified tag removed
     public String removeTag(String s, String tag) {
+    int start = s.indexOf("<" + tag + ">");
+    int end = s.indexOf("</" + tag + ">");
 
-            
+    if (start == -1 || end == -1) {
+        return s;
+    }
+
+    if (end < start) {
+        return s;
+    }
+
+    return s.substring(start + tag.length() + 2, end);
         }
+        
     public static void main(String[] args) {
         CondEx ce = new CondEx();
         System.out.println("2000 " + ce.isLeapYear(2000));
@@ -102,4 +131,47 @@ System.out.println(ce.removeTag("Happy <b>Hello World</b> Birthday", "b"));
     
 }
 
+// 2000 true
+// 2004 true
+// 2003 false
+// 2100 false
+// isSooner
+// 1/2/2030 is sooner than 1/2/2031 true
+// 2/1/2031 is sooner than 2/2/2030 false
+// 1/2/2031 is sooner than 2/2/2030 false
+// 1/5/2030 is sooner than 3/2/2030 true
+// 3/2/2030 is sooner than 1/2/2030 false
+// 1/3/2030 is sooner than 1/2/2030 false
+// 5/2/2030 is sooner than 1/3/2031 true
+// 1/2/2030 is sooner than 1/2/2030 false
+// 4/8/2030 is sooner than 1/2/2030 false
+// Best Fit
+// Find Best fit 6 2 3 is 3
+// Find Best fit 6 4 3 is 1
+// Find Best fit 6 3 4 is 2
+// Find Best fit 1 2 3 is 0
+// Find Best fit 4 6 3 is 2
+// Find Best fit 4 3 6 is 1
+// Find Best fit 4 3 3 is 2
+// Find Best fit 4 4 3 is 1
+// Make benches 3 1 8 is true
+// Make benches 3 1 9 is false
+// Make benches 11 1 15 is true
+// Make benches 4 2 15 is false
+// Make benches 20 0 20 is true
+// Make benches 3 4 20 is true
+// Make benches 0 6 30 is true
+// Make benches 0 5 30 is false
+// Make benches 2 6 23 is true
+// Make benches 3 2 23 is false
+
+// removeTag
+// Hello World
+// <b>Hello World</b>
+// Hello World</b>
+// <b>Hello World
+// </img>Hello World<img>
+// Hello World
+// Hello World
+// Hello World
 
