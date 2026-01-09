@@ -40,7 +40,7 @@ public class CarCharger {
             int curHour = startHour + initial;
             
             if (curHour > 23) {
-                curHour -= 24;
+                curHour %= 24;
                 sumTingWong += rateTable [curHour];
             }
             else {
@@ -59,11 +59,24 @@ public class CarCharger {
      * @return an optimal start time with 0 <= returned value <= 23
      */
     public int getChargeStartTime(int hours){
-        for (int initial = 0; initial <= 23; initial++) {
-            for (int jart = 0; jart < hours; jart++)
-                int curHour = initial + jart;
+        int bestHour = 0;
+        for (int i = 0; i < rateTable.length -1; i++) {
+            if (getChargingCost(bestHour, hours) > getChargingCost(i, hours)) {
+                bestHour = i;
+            }
         }
-         return -1;   //replace this
-    }
-
+        return bestHour;
+        }
+    
 }
+
+// Charging costs
+// 12 1, 40       
+// 0, 2, 110      
+// 22, 7, 550     
+// 22, 30, 3710   
+// Best start Time
+// 1 12
+// 2 0
+// 7 22
+// 30 22
